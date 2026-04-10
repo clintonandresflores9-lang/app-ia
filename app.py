@@ -1,12 +1,13 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from openai import OpenAI
+import os
 
 app = Flask(__name__)
 CORS(app)
 
-# 🔑 PON TU API KEY AQUÍ
-client = OpenAI(api_key="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")
+# 🔑 API KEY SEGURA (NO en el código)
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 @app.route("/ia", methods=["POST"])
 def generar_ia():
